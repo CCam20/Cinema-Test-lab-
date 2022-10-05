@@ -45,7 +45,7 @@ describe('Cinema', function () {
 
 
   it('should be able to filter films by genre' ,function(){
-    const actual = cinema.findByGenre(films, 'drama')
+    const actual = cinema.filmsByProperty(films, films.genre, 'drama')
     const expected = [moonlight, trainspotting]
     assert.deepStrictEqual = (actual, expected)
   });
@@ -53,25 +53,25 @@ describe('Cinema', function () {
 
 
   it('should be able to check whether there are some films from a particular year' ,function(){
-    const actual = cinema.findByYear(films, 2018)
-    assert.deepStrictEqual = (actual, blackPanther)
+    const actual = cinema.isYearPresent(films, 2018)
+    assert.deepStrictEqual = (actual, true)
     
   });
 
 
 
   it('should be able to check whether there are no films from a particular year' ,function(){
-    const actual = cinema.findByYear(films, 1998)
-    assert.deepStrictEqual = (actual, 0)
+    const actual = cinema.isYearPresent(films, 1998)
+    assert.deepStrictEqual = (actual, false)
  
   });
 
 
 
   it('should be able to check whether all films are over a particular length' ,function(){
-   const actual = cinema.movieLength(films, 120)
+   const actual = cinema.movieLength(films, 90)
    const expected = [bladeRunner, blackPanther]
-   assert.deepStrictEqual = (actual, expected)
+   assert.deepStrictEqual = (actual, true)
   });
 
 
@@ -81,6 +81,23 @@ describe('Cinema', function () {
     assert.deepStrictEqual = (actual, 622)
   });
 
-
+  it('Cinema should be able to filter films by year', function(){
+    const actual = cinema.filmsByProperty(films, films.year, 2017)
+    const expected = [bladeRunner, dunkirk, trainspotting]
+    assert.deepStrictEqual = (actual, expected)
+  });
 
 });
+
+
+// Extensions
+// Add a another test, 'Cinema should be able to filter films by year'.
+
+// We already have a method that filters films by genre, the functionality of which is very similar. We don't want two separate methods as that wouldn't be DRY. Your task is get the final test to pass by to writing a new method called filmsByProperty, which takes two arguments:
+
+// the name of the property
+// the value being search for
+// Once the final test is passing, modify the test 'Cinema should be able to filter films by genre' to use the new filmsByProperty method.
+
+// Consideration
+// If you use reduce, remember that you will need to pass in the initial value of the accumulator as the second argument.

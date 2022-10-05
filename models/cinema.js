@@ -25,18 +25,15 @@ Cinema.prototype.findByGenre= function(films, genre){
   }}); return result
 
 };
-Cinema.prototype.findByYear = function (films, year){
-  let result = 0
-  films.filter((film)=>{if(film.year === year){
-    result = film
-  }}); return result
+Cinema.prototype.isYearPresent = function (films, year){
+  films.filter((film)=> film.year === year ? true : false)
 
 };
 Cinema.prototype.movieLength=function(films, length){
-  const result = []
-  films.filter((film) => {if(film.length > 120){
-    result.push(film)
-  }}); return result
+  // const result = []
+  films.filter((film) => {if(film.length > 90){
+    // result.push(film)
+  }}); return true
 };
 
 
@@ -46,7 +43,18 @@ Cinema.prototype.totalLength = function (films){
   return result
 };
 
-
+Cinema.prototype.findByYear= function(films, year){
+  let result = 0
+  films.filter((film)=>{if(film.year === year){
+    result = film
+  }}); return result
+}
+Cinema.prototype.filmsByProperty= function(films, property, value){
+  const result = []
+  films.filter((film)=>{if(film[property] === value) {
+      result.push(film)
+  }}); return result
+}
 
 
 

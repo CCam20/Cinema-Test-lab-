@@ -53,21 +53,32 @@ describe('Cinema', function () {
 
 
   it('should be able to check whether there are some films from a particular year' ,function(){
+    const actual = cinema.findByYear(films, 2018)
+    assert.deepStrictEqual = (actual, blackPanther)
+    
   });
 
 
 
   it('should be able to check whether there are no films from a particular year' ,function(){
+    const actual = cinema.findByYear(films, 1998)
+    assert.deepStrictEqual = (actual, 0)
+ 
   });
 
 
 
   it('should be able to check whether all films are over a particular length' ,function(){
+   const actual = cinema.movieLength(films, 120)
+   const expected = [bladeRunner, blackPanther]
+   assert.deepStrictEqual = (actual, expected)
   });
 
 
 
   it('should be able to calculate total running time of all films' ,function(){
+    const actual = cinema.totalLength(films)
+    assert.deepStrictEqual = (actual, 622)
   });
 
 
